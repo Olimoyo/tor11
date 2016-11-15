@@ -71,7 +71,7 @@
   <joint name="ur10_arm_base" type="fixed">
 	<parent link="arch_link" />
 	<child link="ur10_arm_base_link" />
-	<origin xyz="0.01 -0.27 0.375" rpy="0.0 0.0 1.571" />
+	<origin xyz="0.01 -0.27 0.375" rpy="0.0 0.0 3.1416" />
   </joint>
 
   <!-- Spawn and Join Gripper -->
