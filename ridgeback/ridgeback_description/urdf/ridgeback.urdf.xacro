@@ -20,6 +20,9 @@
   <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0" /></material>
   <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
   <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
+ 
+  <xacro:include filename="$(find ur_description)/urdf/ur10.urdf.xacro" />
+
 
   <xacro:macro name="wheel" params="prefix side *joint_pose">
     <link name="${prefix}_${side}_wheel_link">
@@ -221,6 +224,16 @@
     <parent link="base_link" />
     <child link="mid_mount" />
     <origin xyz="0 0 ${deck_height}" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Spawn arm -->
+  <xacro:ur10_robot prefix="ur10_arm_" joint_limited="true"/>
+
+  <!-- Join arm -->
+  <joint name="ur10_arm_base" type="fixed">
+    <parent link="top_link" />
+    <child link="ur10_arm_base_link" />
+    <origin xyz="0.3058 0 0.0065" rpy="0.0 0.0 -1.57" />
   </joint>
 
   <!-- Bring in simulation data for Gazebo. -->
