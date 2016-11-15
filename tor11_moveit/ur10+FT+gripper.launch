@@ -24,7 +24,7 @@
   </node>
 
   <!-- URDF update for FT -->
-  <node pkg="tf" type="static_transform_publisher" name="FT300_static" args="0.02 0.0 0.0 0.0 1.57 0.0 ur5_arm_ee_link robotiq_force_torque_frame_id 100" />
+  <node pkg="tf" type="static_transform_publisher" name="FT300_static" args="0.02 0.0 0.0 0.0 1.57 0.0 ur10_arm_ee_link robotiq_force_torque_frame_id 100" />
 
 <!-- For Reference, way to launch FT and gripper nodes: -->
 <node name="ft_sensor" pkg="robotiq_force_torque_sensor" type="rq_sensor" respawn="true" output="screen">

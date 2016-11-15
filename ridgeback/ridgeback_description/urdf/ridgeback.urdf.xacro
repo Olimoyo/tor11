@@ -22,6 +22,7 @@
   <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
  
   <xacro:include filename="$(find ur_description)/urdf/ur10.urdf.xacro" />
+  <xacro:include filename="$(find robotiq_s_model_visualization)/cfg/s-model_articulated_macro.xacro" />
 
 
   <xacro:macro name="wheel" params="prefix side *joint_pose">
@@ -234,6 +235,37 @@
     <parent link="top_link" />
     <child link="ur10_arm_base_link" />
     <origin xyz="0.3058 0 0.0065" rpy="0.0 0.0 -1.57" />
+  </joint>
+
+  <!-- Spawn and Join Gripper -->
+
+  <xacro:s-model_articulated prefix="" />
+
+  <joint name="gripper_base" type="fixed">
+    <parent link="ur10_arm_ee_link" />
+      <child link="palm" />
+      <origin xyz="0.11 0.0 0.0" rpy="0.0 -0.784 -1.57" />
+  </joint>
+
+  <!-- Sensor Mount and other custom parts -->
+  <link name="FT300_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.06" radius="0.035"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+	<collision>
+		<geometry>
+			<cylinder length="0.055" radius="0.035"/>
+		</geometry>
+	</collision>
+  </link>
+
+  <joint name="FT300_joint" type="fixed">
+	  <origin xyz="0.03 0 0" rpy="0 1.57 0" />
+	  <parent link="ur10_arm_ee_link" />
+	  <child link="FT300_link" />
   </joint>
 
   <!-- Bring in simulation data for Gazebo. -->
